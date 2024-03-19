@@ -1,0 +1,3 @@
+<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Go Blueprint Hello</title><script src=\"/js/htmx.min.js\"></script><link href=\"/css/output.css\" rel=\"stylesheet\"></head><body>
+<main>
+<p></p></main></body></html>

@@ -29,3 +29,5 @@ tmp/
 main
 
 *.db
+
+tailwindcss

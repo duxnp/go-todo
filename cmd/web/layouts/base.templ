@@ -1,4 +1,4 @@
-package web
+package layouts
 
 templ Base() {
 	<!DOCTYPE html>
@@ -7,10 +7,13 @@ templ Base() {
 			<meta charset="utf-8"/>
 			<title>Go Blueprint Hello</title>
 			<script src="/js/htmx.min.js"></script>
+			<link href="/css/output.css" rel="stylesheet"/>
 		</head>
 		<body>
+			@NavBar()
 			<main>
 				{ children... }
+				<p></p>
 			</main>
 		</body>
 	</html>

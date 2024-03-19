@@ -1,7 +1,9 @@
 package web
 
+import "todo/cmd/web/layouts"
+
 templ HelloForm() {
-	@Base() {
+	@layouts.Base() {
 		<form hx-post="/hello" method="POST" hx-target="#hello-container">
 			<input id="name" name="name" type="text"/>
 			<button type="submit">Submit</button>

@@ -5,12 +5,18 @@ all: build
 
 build:
 	@echo "Building..."
-	@templ generate
+	@./tailwindcss -i cmd/web/static/css/input.css -o cmd/web/static/css/output.css
 	@go build -o main cmd/api/main.go
 
 # Run the application
 run:
 	@go run cmd/api/main.go
+
+templ:
+	@templ generate -watch -proxy="http://localhost:8080/"
+
+tailwind:
+	@./tailwindcss -i cmd/web/static/css/input.css -o cmd/web/css/static/output.css --watch
 
 # Test the application
 test:
