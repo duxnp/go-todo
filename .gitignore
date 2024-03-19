@@ -31,3 +31,5 @@ main
 *.db
 
 tailwindcss
+node_modules
+cmd/web/static/lib/**/*

@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Dev dependencies for my Go project",
+  "scripts": {
+    "postinstall": "copy-files-from-to",
+    "tw": "npx tailwindcss -i cmd/web/static/css/input.css -o cmd/web/static/css/output.css"
+  },
+  "copyFiles": [
+    {
+      "from": "node_modules/htmx.org/dist/htmx.js",
+      "to": "cmd/web/static/lib/htmx/htmx.js"
+    }
+  ],
+  "dependencies": {
+    "htmx.org": "^1.9.11"
+  },
+  "devDependencies": {
+    "copy-files-from-to": "^3.9.1",
+    "daisyui": "^4.7.3",
+    "tailwindcss": "^3.4.1"
+  }
+}
