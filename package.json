@@ -10,12 +10,18 @@
     {
       "from": "node_modules/htmx.org/dist/htmx.js",
       "to": "cmd/web/static/lib/htmx/htmx.js"
+    },
+    {
+      "from": "node_modules/hyperscript.org/dist/_hyperscript.js",
+      "to": "cmd/web/static/lib/hyperscript.org/_hyperscript.js"
     }
   ],
   "dependencies": {
-    "htmx.org": "^1.9.11"
+    "htmx.org": "^1.9.11",
+    "hyperscript.org": "^0.9.12"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "copy-files-from-to": "^3.9.1",
     "daisyui": "^4.7.3",
     "tailwindcss": "^3.4.1"

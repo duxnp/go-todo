@@ -33,3 +33,4 @@ main
 tailwindcss
 node_modules
 cmd/web/static/lib/**/*
+cmd/web/static/css/output.css

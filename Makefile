@@ -5,7 +5,7 @@ all: build
 
 build:
 	@echo "Building..."
-	@./tailwindcss -i cmd/web/static/css/input.css -o cmd/web/static/css/output.css
+	@npx tailwindcss -i cmd/web/static/css/input.css -o cmd/web/static/css/output.css
 	@go build -o main cmd/api/main.go
 
 # Run the application

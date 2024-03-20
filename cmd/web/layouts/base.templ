@@ -7,14 +7,20 @@ templ Base() {
 			<meta charset="utf-8"/>
 			<title>Go Blueprint Hello</title>
 			<script src="/lib/htmx/htmx.js"></script>
+			<script src="/lib/hyperscript.org/_hyperscript.js"></script>
 			<link href="/css/output.css" rel="stylesheet"/>
 		</head>
-		<body>
+		<body class="flex flex-col min-h-screen">
 			@NavBar()
-			<main>
-				{ children... }
-				<p></p>
-			</main>
+			// <header class="flex-none">
+			// 	header contents
+			// </header>
+			<div class="grow container mx-auto px-4">
+				<main>
+					{ children... }
+				</main>
+			</div>
+			@Footer()
 		</body>
 	</html>
 }

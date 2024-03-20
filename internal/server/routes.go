@@ -24,6 +24,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	e.Use(middleware.Static("cmd/web/static"))
 
 	e.GET("/", echo.WrapHandler(templ.Handler(web.Home())))
+	e.GET("/daisyui", echo.WrapHandler(templ.Handler(web.DaisyUI())))
 	e.GET("/foo", echo.WrapHandler(templ.Handler(web.Home())))
 	e.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
 	e.POST("/hello", echo.WrapHandler(http.HandlerFunc(web.HelloWebHandler)))
