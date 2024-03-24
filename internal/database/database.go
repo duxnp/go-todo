@@ -14,6 +14,7 @@ import (
 
 type Service interface {
 	Health() map[string]string
+	GetConnection() *sql.DB
 }
 
 type service struct {
@@ -21,11 +22,11 @@ type service struct {
 }
 
 var (
-	dburl = os.Getenv("DB_URL")
+	dbUrl = os.Getenv("DB_URL")
 )
 
 func New() Service {
-	db, err := sql.Open("sqlite3", dburl)
+	db, err := sql.Open("sqlite3", dbUrl)
 	if err != nil {
 		// This will not be a connection error, but a DSN parse error or
 		// another initialization error.
@@ -47,4 +48,8 @@ func (s *service) Health() map[string]string {
 	return map[string]string{
 		"message": "It's healthy",
 	}
+}
+
+func (s *service) GetConnection() *sql.DB {
+	return s.db
 }

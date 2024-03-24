@@ -1,9 +1,12 @@
 package server
 
 import (
+	"fmt"
 	"net/http"
 
 	"todo/cmd/web"
+	"todo/internal/model"
+	"todo/internal/repository"
 
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
@@ -20,6 +23,16 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	// e.Static("/static/css", "cmd/web/static/css")
 	// e.Static("/static/js", "cmd/web/static/js")
+
+	db := s.db.GetConnection()
+	repos := repository.InitRepositories(db)
+
+	todo := model.Todo{
+		Title:       "foo",
+		Description: "foobar",
+	}
+	foo, _ := repos.TodoRepo.CreateTodo(todo)
+	fmt.Println(foo)
 
 	e.Use(middleware.Static("cmd/web/static"))
 

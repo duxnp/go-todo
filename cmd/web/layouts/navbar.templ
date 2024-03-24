@@ -1,32 +1,28 @@
 package layouts
 
 templ NavBar() {
-	<div class="navbar bg-primary text-primary-content flex-none">
-		<div class="flex-1">
-			<a class="btn btn-ghost text-xl">Todo</a>
+	<div class="navbar bg-primary text-primary-content rounded-box py-1">
+		<div class="flex-1 px-2 lg:flex-none">
+			<a class="text-lg font-bold">Todo</a>
 		</div>
-		<div class="flex-none">
-			<ul class="menu menu-horizontal px-1">
-				<li><a href="/daisyui">DaisyUI</a></li>
-				<li>
-					<details>
-						<summary>
-							Parent
-						</summary>
-						<ul class="p-2 bg-base-100 rounded-t-none">
-							<li><a>Link 1</a></li>
-							<li><a>Link 2</a></li>
-						</ul>
-					</details>
-				</li>
-				<div class="dropdown dropdown-end">
-					<div tabindex="0" role="button" class="btn m-1">Click</div>
+		<div class="flex justify-end flex-1 px-2">
+			<div class="flex items-center">
+				<a href="/daisyui" class="btn btn-ghost rounded-btn">daisyUI</a>
+				<div class="dropdown dropdown-hover dropdown-end">
+					<div tabindex="0" role="button" class="btn btn-ghost m-1">Hover</div>
 					<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
 						<li><a>Item 1</a></li>
 						<li><a>Item 2</a></li>
 					</ul>
 				</div>
-			</ul>
+				<div class="dropdown dropdown-end">
+					<div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
+					<ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+						<li><a>Item 1</a></li>
+						<li><a>Item 2</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 }
