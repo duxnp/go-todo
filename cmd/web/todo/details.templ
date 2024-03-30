@@ -1,0 +1,13 @@
+package todo
+
+import "todo/cmd/web/layouts"
+
+templ Details(vm todoDetailsVM) {
+	@layouts.Base() {
+		Todo:
+		<ul>
+			<li>{ vm.todo.Title }</li>
+			<li>{ vm.todo.Description }</li>
+		</ul>
+	}
+}

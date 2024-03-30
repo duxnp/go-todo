@@ -2,11 +2,12 @@ package database
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"log"
 	"os"
 	"time"
+
+	"github.com/jmoiron/sqlx"
 
 	_ "github.com/joho/godotenv/autoload"
 	_ "github.com/mattn/go-sqlite3"
@@ -14,11 +15,11 @@ import (
 
 type Service interface {
 	Health() map[string]string
-	GetConnection() *sql.DB
+	GetConnection() *sqlx.DB
 }
 
 type service struct {
-	db *sql.DB
+	db *sqlx.DB
 }
 
 var (
@@ -26,7 +27,8 @@ var (
 )
 
 func New() Service {
-	db, err := sql.Open("sqlite3", dbUrl)
+	// db, err := sql.Open("sqlite3", dbUrl)
+	db, err := sqlx.Connect("sqlite3", dbUrl)
 	if err != nil {
 		// This will not be a connection error, but a DSN parse error or
 		// another initialization error.
@@ -50,6 +52,6 @@ func (s *service) Health() map[string]string {
 	}
 }
 
-func (s *service) GetConnection() *sql.DB {
+func (s *service) GetConnection() *sqlx.DB {
 	return s.db
 }
