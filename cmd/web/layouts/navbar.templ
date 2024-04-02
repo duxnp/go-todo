@@ -1,5 +1,7 @@
 package layouts
 
+import "todo/internal/util"
+
 templ NavBar() {
 	<div class="navbar bg-primary text-primary-content rounded-box py-1">
 		<div class="flex-1 px-2 lg:flex-none">
@@ -7,19 +9,19 @@ templ NavBar() {
 		</div>
 		<div class="flex justify-end flex-1 px-2">
 			<div class="flex items-center">
-				<a href="/daisyui" class="btn btn-ghost rounded-btn">daisyUI</a>
+				<a
+					class="btn btn-ghost rounded-btn"
+					href={ templ.URL(util.Reverse(ctx, "get-todos")) }
+				>
+					Todos
+				</a>
 				<div class="dropdown dropdown-hover dropdown-end">
-					<div tabindex="0" role="button" class="btn btn-ghost m-1">Hover</div>
-					<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-						<li><a>Item 1</a></li>
-						<li><a>Item 2</a></li>
-					</ul>
-				</div>
-				<div class="dropdown dropdown-end">
-					<div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
-					<ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-						<li><a>Item 1</a></li>
-						<li><a>Item 2</a></li>
+					<div tabindex="0" role="button" class="btn btn-ghost m-1">Tests</div>
+					<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-neutral text-base-content rounded-box w-52">
+						<li>
+							<a href={ templ.URL(util.Reverse(ctx, "daisyui")) }>daisyUI</a>
+							<a class="font-bold text-neutral-content">Menu Item 2</a>
+						</li>
 					</ul>
 				</div>
 			</div>

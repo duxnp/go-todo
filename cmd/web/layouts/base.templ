@@ -4,7 +4,8 @@ templ Base() {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<meta charset="utf-8"/>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Go Blueprint Hello</title>
 			<script src="/lib/htmx/htmx.js"></script>
 			<script src="/lib/hyperscript.org/_hyperscript.js"></script>
@@ -12,10 +13,7 @@ templ Base() {
 		</head>
 		<body class="flex flex-col min-h-screen">
 			@NavBar()
-			// <header class="flex-none">
-			// 	header contents
-			// </header>
-			<div class="grow container mx-auto px-4">
+			<div class="grow container mx-auto px-4 pt-4">
 				<main>
 					{ children... }
 				</main>

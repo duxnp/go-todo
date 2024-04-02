@@ -24,11 +24,13 @@ type handlers struct {
 	repo todoRepo
 }
 
-func RegisterRoutes(e *echo.Echo, db *sqlx.DB) {
+func RegisterRoutes(parent *echo.Group, db *sqlx.DB) {
 	h := handlers{
 		repo: todoRepo(&database{db: db}),
 	}
 
-	e.GET("/todo", h.indexHandler).Name = "get-todos"
-	e.GET("/todo/:id", h.detailsHandler).Name = "get-todo"
+	g := parent.Group("/todo")
+
+	g.GET("/", h.indexHandler).Name = "get-todos"
+	g.GET("/:id", h.detailsHandler).Name = "get-todo"
 }

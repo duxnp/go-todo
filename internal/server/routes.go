@@ -6,8 +6,7 @@ import (
 
 	"todo/cmd/web"
 	"todo/cmd/web/todo"
-	"todo/internal/model"
-	"todo/internal/repository"
+	mw "todo/internal/middleware"
 	"todo/internal/util"
 
 	"github.com/a-h/templ"
@@ -15,14 +14,11 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-type DummyDB struct{}
-
-func (db *DummyDB) GetUsernameByIDs(ctx echo.Context, ID int) (string, error) {
-	return "adam", nil
-}
-
 func (s *Server) RegisterRoutes() http.Handler {
 	e := echo.New()
+	e.Use(mw.ContextValue)
+	e.Use(mw.SetCurrentPath)
+	// e.Use(mw.SetEchoInstance)
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
@@ -34,54 +30,32 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	e.Use(middleware.Static("cmd/web/static"))
 
-	// e.RouteNotFound()
+	e.RouteNotFound("/*", echo.WrapHandler(templ.Handler(web.NotFound())))
+	e.HTTPErrorHandler = customHTTPErrorHandler
 
 	db := s.db.GetConnection()
 	// repos := repository.InitRepositories(db)
-	dummyDb := &DummyDB{}
-	web.RegisterRoutes(e, dummyDb)
-	todo.RegisterRoutes(e, db)
 
-	e.GET("/", echo.WrapHandler(templ.Handler(web.Home())))
-	e.GET("/daisyui", echo.WrapHandler(templ.Handler(web.DaisyUI())))
-	e.GET("/foo", echo.WrapHandler(templ.Handler(web.Home())))
-	e.GET("/foo2", HomeHandler)
-	e.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
-	e.POST("/hello", echo.WrapHandler(http.HandlerFunc(web.HelloWebHandler)))
+	g := e.Group("")
 
-	// e.GET("/", s.HelloWorldHandler)
-	e.GET("/test", s.TestHandler)
+	todo.RegisterRoutes(g, db)
 
-	e.GET("/health", s.healthHandler)
+	g.GET("/", echo.WrapHandler(templ.Handler(web.Home())))
+	g.GET("/daisyui", echo.WrapHandler(templ.Handler(web.DaisyUI()))).Name = "daisyui"
+	g.GET("/foo", echo.WrapHandler(templ.Handler(web.Home())))
+	g.GET("/foo2", HomeHandler)
+	g.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
+	g.POST("/hello", echo.WrapHandler(http.HandlerFunc(web.HelloWebHandler)))
+
+	// g.GET("/", s.HelloWorldHandler)
+
+	g.GET("/health", s.healthHandler)
 
 	return e
 }
 
 func HomeHandler(c echo.Context) error {
 	return util.Render(c, http.StatusOK, web.Home2())
-}
-
-// I made this as a way to see if the todo repo was working
-// I might not use separate repos
-func (s *Server) TestHandler(c echo.Context) error {
-	db := s.db.GetConnection()
-	repos := repository.InitRepositories(db)
-
-	todo := model.Todo{
-		Title:       "foo",
-		Description: "foobar",
-	}
-	foo, _ := repos.TodoRepo.CreateTodo(todo)
-	fmt.Println(foo)
-
-	todo2 := repos.TodoRepo.GetTodo(1)
-	fmt.Printf("%#v\n", todo2)
-
-	resp := map[string]string{
-		"message": "Test complete",
-	}
-
-	return c.JSON(http.StatusOK, resp)
 }
 
 func (s *Server) HelloWorldHandler(c echo.Context) error {
@@ -94,4 +68,16 @@ func (s *Server) HelloWorldHandler(c echo.Context) error {
 
 func (s *Server) healthHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, s.db.Health())
+}
+
+func customHTTPErrorHandler(err error, c echo.Context) {
+	code := http.StatusInternalServerError
+	if he, ok := err.(*echo.HTTPError); ok {
+		code = he.Code
+	}
+	c.Logger().Error(err)
+	errorPage := fmt.Sprintf("./cmd/web/%d.html", code)
+	if err := c.File(errorPage); err != nil {
+		c.Logger().Error(err)
+	}
 }

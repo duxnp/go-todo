@@ -2,18 +2,16 @@ package todo
 
 import "todo/cmd/web/layouts"
 import "todo/internal/model"
-import "strconv"
-import "github.com/labstack/echo/v4"
+import "todo/internal/util"
 
-templ Index(model []model.Todo, e *echo.Echo) {
+templ Index(model []model.Todo) {
 	@layouts.Base() {
 		Todos:
 		<ul>
 			for _, item := range model {
 				<li>
-					<a href={ templ.URL("/todo/" + strconv.Itoa(int(item.ID))) }>
+					<a href={ templ.URL(util.Reverse(ctx, "get-todo", item.ID)) }>
 						{ item.Title }
-						{ e.Reverse("get-todo", item.ID) }
 					</a>
 				</li>
 			}
