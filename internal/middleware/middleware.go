@@ -6,6 +6,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Tutorials used:
+// https://jeffcaldwell.is/blog/using-echo-context-with-templ-components
+// https://stackoverflow.com/a/69331251
+
 // extend echo.Context
 type contextValue struct {
 	echo.Context
@@ -65,6 +69,7 @@ func SetCurrentPath(next echo.HandlerFunc) echo.HandlerFunc {
 }
 
 // Middleware which adds the Echo instance to the context with a key named "echo"
+// Templ is designed to
 //
 // It can be retrieved like so:
 //

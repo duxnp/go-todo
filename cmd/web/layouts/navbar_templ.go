@@ -25,25 +25,25 @@ func NavBar() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"navbar bg-primary text-primary-content rounded-box py-1\"><div class=\"flex-1 px-2 lg:flex-none\"><a class=\"text-lg font-bold\">Todo</a></div><div class=\"flex justify-end flex-1 px-2\"><div class=\"flex items-center\"><a class=\"btn btn-ghost rounded-btn\" href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 templ.SafeURL = templ.URL(util.Reverse(ctx, "daisyui"))
+		var templ_7745c5c3_Var2 templ.SafeURL = templ.URL(util.Reverse(ctx, "get-todos"))
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var2)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">Todos</a><div class=\"dropdown dropdown-hover dropdown-end\"><div tabindex=\"0\" role=\"button\" class=\"btn btn-ghost m-1\">Tests</div><ul tabindex=\"0\" class=\"dropdown-content z-[1] menu p-2 shadow bg-neutral text-base-content rounded-box w-52\"><li><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var3 templ.SafeURL = templ.URL(util.Reverse(ctx, "get-todos"))
+		var templ_7745c5c3_Var3 templ.SafeURL = templ.URL(util.Reverse(ctx, "daisyui"))
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var3)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">daisyUI</a> <a class=\"font-bold text-neutral-content\">Menu Item 2</a></li></ul></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
