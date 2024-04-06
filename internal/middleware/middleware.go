@@ -6,6 +6,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Tutorials used:
+// https://jeffcaldwell.is/blog/using-echo-context-with-templ-components
+// https://stackoverflow.com/a/69331251
+
 // extend echo.Context
 type contextValue struct {
 	echo.Context

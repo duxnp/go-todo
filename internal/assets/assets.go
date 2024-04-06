@@ -15,6 +15,24 @@ const COMPILED_ASSETS_JS_ROUTE_NAME = "compiled-assets-js"
 
 type compileResults = map[precompiler.FileType]*precompiler.CompileResult
 
+// This will compile the assets for cache busting
+// Could also be configured to write the files to disk
+func compile() compileResults {
+	assets, error := precompiler.Compile(precompiler.Config{
+		Files: []string{
+			// "cmd/web/static/css/foo.css",
+			"cmd/web/static/css/output.css",
+			"cmd/web/static/js/application.js",
+		},
+		Minify:     false,
+		FilePrefix: COMPILED_ASSETS_FILE_PREFIX,
+	})
+	if error != nil {
+		log.Fatal(error)
+	}
+	return assets
+}
+
 // Compile CSS and JS assets then register routes to serve the assets from memory
 func RegisterFeature(e *echo.Echo) {
 	assets := compile()
@@ -36,23 +54,4 @@ func RegisterFeature(e *echo.Echo) {
 			},
 		).Name = COMPILED_ASSETS_JS_ROUTE_NAME
 	}
-
-}
-
-// This will compile the assets but instead of writing to disk it will store it in memory
-// For cache busting
-func compile() compileResults {
-	assets, error := precompiler.Compile(precompiler.Config{
-		Files: []string{
-			// "cmd/web/static/css/foo.css",
-			"cmd/web/static/css/output.css",
-			"cmd/web/static/js/application.js",
-		},
-		Minify:     false,
-		FilePrefix: COMPILED_ASSETS_FILE_PREFIX,
-	})
-	if error != nil {
-		log.Fatal(error)
-	}
-	return assets
 }
