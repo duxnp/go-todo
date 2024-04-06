@@ -32,7 +32,7 @@ func DaisyUI() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"prose\"><h1>daisyUI</h1><h2>daisyUI</h2><div class=\"flex flex-col\"><div class=\"form-control w-52\"><label class=\"cursor-pointer label\"><span class=\"label-text\">Remember me</span> <input type=\"checkbox\" class=\"toggle toggle-primary\" checked></label></div></div><h2>Forms</h2><h3>Text Input</h3><label class=\"form-control w-full max-w-xs\"><div class=\"label\"><span class=\"label-text\">What is your name?</span> <span class=\"label-text-alt\">Top Right label</span></div><input type=\"text\" placeholder=\"Type here\" class=\"input input-bordered w-full max-w-xs\"><div class=\"label\"><span class=\"label-text-alt\">Bottom Left label</span> <span class=\"label-text-alt\">Bottom Right label</span></div></label><h3>Text Input with Error</h3><label class=\"form-control w-full max-w-xs\"><div class=\"label\"><span class=\"label-text\">What is your name?</span></div><input type=\"text\" placeholder=\"Type here\" class=\"input input-bordered input-error w-full max-w-xs\"><div class=\"label\"><span class=\"label-text-alt\">Bottom Left label</span> <span class=\"label-text-alt text-error\">Bottom Left label</span></div></label><label class=\"block\"><span class=\"text-gray-700\">Normal mostly unstyled input</span> <input type=\"text\" class=\"mt-1 block w-full\" placeholder=\"\"></label><h2>Dropdown</h2><div class=\"dropdown\"><div tabindex=\"0\" role=\"button\" class=\"btn m-1\">Click</div><ul tabindex=\"0\" class=\"dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52\"><li><a>Item 1</a></li><li><a>Item 2</a></li></ul></div><h2>Modals</h2><!-- Open the modal using ID.showModal() method --><div class=\"tooltip tooltip-accent\" data-tip=\"Click here to open a modal\"><button class=\"btn btn-secondary\" onclick=\"my_modal_2.showModal()\">open modal</button></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -48,7 +48,7 @@ func DaisyUI() templ.Component {
 						templ_7745c5c3_Buffer = templ.GetBuffer()
 						defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 					}
-					templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("Hellooooooooooooooooooooo")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -61,7 +61,7 @@ func DaisyUI() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -71,7 +71,7 @@ func DaisyUI() templ.Component {
 						templ_7745c5c3_Buffer = templ.GetBuffer()
 						defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 					}
-					templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 4)
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"py-4\">Press ESC key or click the button below to close</p>")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -93,7 +93,7 @@ func DaisyUI() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 5)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2>Tabs</h2><div role=\"tablist\" class=\"tabs tabs-lifted\"><input type=\"radio\" name=\"my_tabs_2\" role=\"tab\" class=\"tab\" aria-label=\"Tab 1\"><div role=\"tabpanel\" class=\"tab-content bg-base-100 border-base-300 rounded-box p-6\">Tab content 1</div><input type=\"radio\" name=\"my_tabs_2\" role=\"tab\" class=\"tab\" aria-label=\"Tab 2\" checked><div role=\"tabpanel\" class=\"tab-content bg-base-100 border-base-300 rounded-box p-6\">Tab content 2</div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
