@@ -1,5 +1,7 @@
 package layouts
 
+import "todo/internal/util"
+
 templ Base() {
 	<!DOCTYPE html>
 	<html lang="en">
@@ -9,7 +11,8 @@ templ Base() {
 			<title>Go Blueprint Hello</title>
 			<script src="/lib/htmx/htmx.js"></script>
 			<script src="/lib/hyperscript.org/_hyperscript.js"></script>
-			<link href="/css/output.css" rel="stylesheet"/>
+			// <link href="/css/output.css" rel="stylesheet"/>
+			<link href={ string(templ.URL(util.GetCssURL(ctx))) } rel="stylesheet"/>
 		</head>
 		<body class="flex flex-col min-h-screen">
 			@NavBar()

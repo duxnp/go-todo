@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/labstack/echo/v4"
+	precompiler "github.com/parnic/go-assetprecompiler"
 )
 
 // extend echo.Context
@@ -65,6 +66,7 @@ func SetCurrentPath(next echo.HandlerFunc) echo.HandlerFunc {
 }
 
 // Middleware which adds the Echo instance to the context with a key named "echo"
+// Templ is designed to
 //
 // It can be retrieved like so:
 //
@@ -76,5 +78,14 @@ func SetEchoInstance(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		c.Set("echo", c.Echo())
 		return next(c)
+	}
+}
+
+func SetAssets(assets map[precompiler.FileType]*precompiler.CompileResult) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			c.Set("assets", assets)
+			return next(c)
+		}
 	}
 }
