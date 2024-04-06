@@ -6,6 +6,7 @@ import (
 
 	"todo/cmd/web"
 	"todo/cmd/web/todo"
+	"todo/internal/assets"
 	mw "todo/internal/middleware"
 	"todo/internal/util"
 
@@ -19,11 +20,11 @@ func (s *Server) RegisterRoutes() http.Handler {
 	e.Use(mw.ContextValue)
 	e.Use(mw.SetCurrentPath)
 	e.Use(mw.SetEchoInstance)
-	e.Use(setAssetsMiddleware(s.assets))
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.Gzip())
 
+	assets.RegisterFeature(e)
 	fileServer := http.FileServer(http.FS(web.Files))
 	e.GET("/js/*", echo.WrapHandler(fileServer))
 
@@ -49,7 +50,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	// g.GET("/", s.HelloWorldHandler)
 
-	g.GET("/assets/:file", s.compiledAssetsHandler).Name = COMPILED_ASSETS_ROUTE_NAME
+	// g.GET("/assets/:file", s.compiledAssetsHandler).Name = COMPILED_ASSETS_ROUTE_NAME
 
 	g.GET("/health", s.healthHandler)
 

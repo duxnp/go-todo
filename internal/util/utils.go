@@ -6,7 +6,6 @@ import (
 
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
-	precompiler "github.com/parnic/go-assetprecompiler"
 )
 
 // This custom Render replaces Echo's echo.Context.Render() with templ's templ.Component.Render().
@@ -45,17 +44,4 @@ func GetEcho(ctx context.Context) (*echo.Echo, error) {
 		return e.(*echo.Echo), nil
 	}
 	return nil, errors.New("you forgot the SetEchoInstance middleware")
-}
-
-func GetAssets(ctx context.Context) map[precompiler.FileType]*precompiler.CompileResult {
-	return ctx.Value("assets").(map[precompiler.FileType]*precompiler.CompileResult)
-}
-
-func GetCssURL(ctx context.Context) string {
-	e, error := GetEcho(ctx)
-	if error != nil {
-		return error.Error()
-	}
-	assets := GetAssets(ctx)
-	return e.Reverse("compiled-assets", assets[precompiler.CSS].Hash+".css")
 }

@@ -8,25 +8,20 @@ import (
 	"time"
 
 	_ "github.com/joho/godotenv/autoload"
-	precompiler "github.com/parnic/go-assetprecompiler"
 
 	"todo/internal/database"
 )
 
 type Server struct {
 	port int
-
-	assets map[precompiler.FileType]*precompiler.CompileResult
-	db     database.Service
+	db   database.Service
 }
 
 func NewServer() *http.Server {
 	port, _ := strconv.Atoi(os.Getenv("PORT"))
 	NewServer := &Server{
 		port: port,
-
-		assets: precompileAssets(),
-		db:     database.New(),
+		db:   database.New(),
 	}
 
 	// Declare Server config

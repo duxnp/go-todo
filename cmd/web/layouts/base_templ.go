@@ -10,6 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
+import "todo/internal/assets"
 import "todo/internal/util"
 
 func Base() templ.Component {
@@ -29,7 +30,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ.URL(util.GetCssURL(ctx)))))
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ.URL(util.Reverse(ctx, assets.COMPILED_ASSETS_CSS_ROUTE_NAME)))))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

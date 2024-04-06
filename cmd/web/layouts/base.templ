@@ -1,5 +1,6 @@
 package layouts
 
+import "todo/internal/assets"
 import "todo/internal/util"
 
 templ Base() {
@@ -8,11 +9,10 @@ templ Base() {
 		<head>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<title>Go Blueprint Hello</title>
+			<title>Go Tests</title>
 			<script src="/lib/htmx/htmx.js"></script>
 			<script src="/lib/hyperscript.org/_hyperscript.js"></script>
-			// <link href="/css/output.css" rel="stylesheet"/>
-			<link href={ string(templ.URL(util.GetCssURL(ctx))) } rel="stylesheet"/>
+			<link href={ string(templ.URL(util.Reverse(ctx, assets.COMPILED_ASSETS_CSS_ROUTE_NAME))) } rel="stylesheet"/>
 		</head>
 		<body class="flex flex-col min-h-screen">
 			@NavBar()
