@@ -44,7 +44,7 @@ func GetEcho(ctx context.Context) (*echo.Echo, error) {
 	if e != nil {
 		return e.(*echo.Echo), nil
 	}
-	return nil, errors.New("You forgot the SetEchoInstance middleware!")
+	return nil, errors.New("you forgot the SetEchoInstance middleware")
 }
 
 func GetAssets(ctx context.Context) map[precompiler.FileType]*precompiler.CompileResult {
@@ -57,5 +57,5 @@ func GetCssURL(ctx context.Context) string {
 		return error.Error()
 	}
 	assets := GetAssets(ctx)
-	return e.Reverse("assets-css", assets[precompiler.CSS].Hash+".css")
+	return e.Reverse("compiled-assets", assets[precompiler.CSS].Hash+".css")
 }

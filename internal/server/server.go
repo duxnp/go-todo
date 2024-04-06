@@ -2,7 +2,6 @@ package server
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -40,21 +39,4 @@ func NewServer() *http.Server {
 	}
 
 	return server
-}
-
-// This will compile the assets but instead of writing to disk it will store it in memory
-// For cache busting
-func precompileAssets() map[precompiler.FileType]*precompiler.CompileResult {
-	assets, error := precompiler.Compile(precompiler.Config{
-		Files: []string{
-			// "cmd/web/static/css/foo.css",
-			"cmd/web/static/css/output.css",
-		},
-		Minify:     false,
-		FilePrefix: "app-",
-	})
-	if error != nil {
-		log.Fatal(error)
-	}
-	return assets
 }

@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/labstack/echo/v4"
-	precompiler "github.com/parnic/go-assetprecompiler"
 )
 
 // extend echo.Context
@@ -78,14 +77,5 @@ func SetEchoInstance(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		c.Set("echo", c.Echo())
 		return next(c)
-	}
-}
-
-func SetAssets(assets map[precompiler.FileType]*precompiler.CompileResult) echo.MiddlewareFunc {
-	return func(next echo.HandlerFunc) echo.HandlerFunc {
-		return func(c echo.Context) error {
-			c.Set("assets", assets)
-			return next(c)
-		}
 	}
 }

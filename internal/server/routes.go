@@ -3,7 +3,6 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"strings"
 
 	"todo/cmd/web"
 	"todo/cmd/web/todo"
@@ -13,7 +12,6 @@ import (
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	precompiler "github.com/parnic/go-assetprecompiler"
 )
 
 func (s *Server) RegisterRoutes() http.Handler {
@@ -21,7 +19,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	e.Use(mw.ContextValue)
 	e.Use(mw.SetCurrentPath)
 	e.Use(mw.SetEchoInstance)
-	e.Use(mw.SetAssets(s.assets))
+	e.Use(setAssetsMiddleware(s.assets))
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.Gzip())
@@ -51,21 +49,11 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	// g.GET("/", s.HelloWorldHandler)
 
-	g.GET("/assets/css/:file", s.CssAssetHandler).Name = "assets-css"
+	g.GET("/assets/:file", s.compiledAssetsHandler).Name = COMPILED_ASSETS_ROUTE_NAME
 
 	g.GET("/health", s.healthHandler)
 
 	return e
-}
-
-func (s *Server) CssAssetHandler(c echo.Context) error {
-	file := c.Param("file")
-
-	if strings.HasSuffix(file, ".css") {
-		return c.Blob(http.StatusOK, "text/css", s.assets[precompiler.CSS].Bytes)
-	} else {
-		return c.Blob(http.StatusOK, "text/css", s.assets[precompiler.CSS].Bytes)
-	}
 }
 
 func customHTTPErrorHandler(err error, c echo.Context) {
