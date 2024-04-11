@@ -8,6 +8,10 @@
   },
   "copyFiles": [
     {
+      "from": "node_modules/@formkit/auto-animate/index.mjs",
+      "to": "cmd/web/static/lib/auto-animate/index.mjs"
+    },
+    {
       "from": "node_modules/htmx.org/dist/htmx.js",
       "to": "cmd/web/static/lib/htmx/htmx.js"
     },
@@ -17,6 +21,7 @@
     }
   ],
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.1",
     "htmx.org": "^1.9.11",
     "hyperscript.org": "^0.9.12"
   },

@@ -1,0 +1,30 @@
+package experiments
+
+import "todo/cmd/web/layouts"
+
+templ AutoAnimate() {
+	@layouts.Base() {
+		<h1>Auto Animate</h1>
+		<div class="card bg-base-200 shadow-xl">
+			<div class="card-body cursor-pointer" id="dropdown">
+				<div class="card-title">
+					Click me to open!
+				</div>
+			</div>
+		</div>
+		<script type="module">
+      import autoAnimate from '/lib/auto-animate/index.mjs'
+      const dropdown = document.getElementById('dropdown')
+      autoAnimate(dropdown)
+
+      const p = document.createElement('p')
+      p.innerText = "Oh yeah! Oh no! I can't believe this! Where are my eggs already?!"
+
+      dropdown.addEventListener('click', toggle, false);
+
+      function toggle () {
+        dropdown.contains(p) ? p.remove() : dropdown.appendChild(p)
+      }
+    </script>
+	}
+}

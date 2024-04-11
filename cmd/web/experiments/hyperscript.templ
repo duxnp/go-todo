@@ -1,0 +1,84 @@
+package experiments
+
+import "todo/cmd/web/layouts"
+
+templ Hyperscript() {
+	@layouts.Base() {
+		<section class="prose max-w-none">
+			<h1>hyperscript</h1>
+			<span class="btn cursor-pointer" _="on click call alert('You clicked me!')">
+				Click Me!
+			</span>
+			<div class="divider"></div>
+			<div class="flex flex-col gap-4">
+				<div class="flex flex-row gap-2">
+					<input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"/>
+					<div
+						class="btn"
+						_="on click
+                 get the (value of the previous <input/>) as a String
+                 then put it into #bar's value"
+					>
+						Copy text ->
+					</div>
+					<input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" id="bar"/>
+				</div>
+				<div class="flex flex-row gap-2">
+					<p
+						_="init if localStorage.foo is undefined
+                  alert('it is undefined')
+                else
+                  alert('it is not undefined')
+            "
+					>Init local storage</p>
+				</div>
+				<div class="flex flex-row gap-2">
+					<input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"/>
+					<div
+						class="btn"
+						_="on click
+                 get the (value of the previous <input/>) as a String
+                 then put it into localStorage.foo"
+					>
+						Copy into local storage
+					</div>
+					<div
+						class="btn btn-outline"
+						_="on click call alert(localStorage.foo)"
+					>
+						Show text from local storage
+					</div>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<div id="test123">
+				<div
+					_="on click log 'Test' then put my outerHTML after me"
+				>Copy Me</div>
+			</div>
+			<div class="form-control">
+				<label class="label cursor-pointer">
+					<span class="label-text">Test a checkbox</span>
+					<input
+						type="checkbox"
+						checked="checked"
+						class="checkbox"
+						_="on change
+              log(event)
+              log(me)
+              log(my value)
+              log(my checked)
+            end"
+					/>
+				</label>
+			</div>
+			<div
+				_="init transition my opacity to 100% over 3 seconds
+      on click log 'alksjfalkdjf'"
+				style="opacity: 0;"
+			>
+				Fade Me In
+			</div>
+		</section>
+	}
+}

@@ -1,14 +1,29 @@
 package layouts
 
+import "todo/cmd/web/shared"
 import "todo/internal/util"
 
 templ NavBar() {
-	<div class="navbar bg-primary text-primary-content rounded-box py-1">
+	<div class="navbar bg-primary text-primary-content">
 		<div class="flex-1 px-2 lg:flex-none">
-			<a class="text-lg font-bold">Todo</a>
+			<a class="text-lg font-bold">Todos</a>
 		</div>
-		<div class="flex justify-end flex-1 px-2">
+		<div class="flex justify-end flex-1">
 			<div class="flex items-center">
+				<ul class="menu menu-horizontal px-1">
+					<li><a>Link</a></li>
+					<li>
+						<details>
+							<summary>
+								Parent
+							</summary>
+							<ul class="p-2 bg-primary z-[1] shadow">
+								<li><a>Link 1</a></li>
+								<li><a>Link 2</a></li>
+							</ul>
+						</details>
+					</li>
+				</ul>
 				<a
 					class="btn btn-ghost rounded-btn"
 					href={ templ.URL(util.Reverse(ctx, "get-todos")) }
@@ -17,13 +32,17 @@ templ NavBar() {
 				</a>
 				<div class="dropdown dropdown-hover dropdown-end">
 					<div tabindex="0" role="button" class="btn btn-ghost m-1">Tests</div>
-					<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-neutral text-base-content rounded-box w-52">
+					<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow-md bg-primary rounded-box w-52">
 						<li>
+							<a href={ templ.URL(util.Reverse(ctx, "autoanimate")) }>Auto Animate</a>
 							<a href={ templ.URL(util.Reverse(ctx, "daisyui")) }>daisyUI</a>
-							<a class="font-bold text-neutral-content">Menu Item 2</a>
+							<a href={ templ.URL(util.Reverse(ctx, "hyperscript")) }>hyperscript</a>
+							<a href={ templ.URL(util.Reverse(ctx, "tailwind")) }>Tailwind</a>
+							<a class="font-bold">Active Menu Item</a>
 						</li>
 					</ul>
 				</div>
+				@shared.ThemeSwap()
 			</div>
 		</div>
 	</div>
