@@ -1,0 +1,148 @@
+package experiments
+
+import "todo/cmd/web/layouts"
+import "todo/cmd/web/shared"
+
+templ DaisyUI() {
+	@layouts.Base() {
+		<div class="prose max-w-none">
+			<h1>daisyUI</h1>
+			<div class="divider">This is a divider</div>
+			<h2>Tabs</h2>
+			<div role="tablist" class="tabs tabs-lifted">
+				// Nav
+				<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Nav" checked/>
+				<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+					@daisyUINav()
+				</div>
+				// Forms
+				<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Forms"/>
+				<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+					@daisyUIForm()
+				</div>
+				// Modals
+				<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Modals"/>
+				<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+					@daisyUIModal()
+				</div>
+				// Dropdowns
+				<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Dropdowns"/>
+				<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+					@daisyUIDropdowns()
+				</div>
+			</div>
+		</div>
+	}
+}
+
+templ daisyUINav() {
+	<div class="navbar bg-base-100">
+		<div class="flex-1">
+			<a class="btn btn-ghost text-xl">daisyUI</a>
+		</div>
+		<div class="flex-none">
+			<ul class="menu menu-horizontal px-1">
+				<li><a>Link</a></li>
+				<li>
+					<details>
+						<summary>
+							Parent
+						</summary>
+						<ul class="p-2 bg-base-100 rounded-t-none">
+							<li><a>Link 1</a></li>
+							<li><a>Link 2</a></li>
+						</ul>
+					</details>
+				</li>
+			</ul>
+		</div>
+	</div>
+}
+
+templ daisyUIForm() {
+	<h3>Text Input</h3>
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">What is your name?</span>
+			<span class="label-text-alt">Top Right label</span>
+		</div>
+		<input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs"/>
+		<div class="label">
+			<span class="label-text-alt">Bottom Left label</span>
+			<span class="label-text-alt">Bottom Right label</span>
+		</div>
+	</label>
+	<h3>Text Input with Error</h3>
+	<label class="form-control w-full max-w-xs">
+		<div class="label">
+			<span class="label-text">What is your name?</span>
+		</div>
+		<input type="text" placeholder="Type here" class="input input-bordered input-error w-full max-w-xs"/>
+		<div class="label">
+			<span class="label-text-alt">Bottom Left label</span>
+			<span class="label-text-alt text-error">Bottom Left label</span>
+		</div>
+	</label>
+	// Normal mostly unstyled input
+	<label class="block">
+		<span class="text-gray-700">Normal mostly unstyled input</span>
+		<input type="text" class="mt-1 block w-full" placeholder=""/>
+	</label>
+	<h2>Toggle</h2>
+	<div class="flex flex-col">
+		<div class="form-control w-52">
+			<label class="cursor-pointer label">
+				<span class="label-text">Remember me</span>
+				<input type="checkbox" class="toggle toggle-primary" checked/>
+			</label>
+		</div>
+	</div>
+}
+
+templ daisyUIModal() {
+	// Modal
+	<h2 class="mt-0">Modals</h2>
+	<!-- Open the modal using ID.showModal() method -->
+	<div class="tooltip tooltip-accent" data-tip="Click here to open a modal">
+		<button class="btn btn-secondary" onclick="my_modal_2.showModal()">open modal</button>
+	</div>
+	<div class="tooltip tooltip-accent" data-tip="Click here to open a modal">
+		<button class="btn btn-secondary" _="on click my_modal_2.showModal()">open modal with hyperscript</button>
+	</div>
+	<div class="join">
+		<button class="btn btn-secondary btn-outline join-item" onclick="my_modal_2.showModal()">open modal</button>
+		<button class="btn btn-secondary btn-outline join-item" _="on click my_modal_2.showModal()">open modal with hyperscript</button>
+	</div>
+	<div class="join">
+		<button class="btn btn-secondary join-item rounded-full outline outline-secondary-content">btn 1</button>
+		<button class="btn btn-secondary join-item rounded-full outline outline-secondary-content tooltip tooltip-accent" data-tip="MY TOOLSTIP!">btn 2</button>
+		<button class="btn btn-secondary join-item rounded-full outline outline-secondary-content">btn 3</button>
+	</div>
+	@shared.Modal("my_modal_2") {
+		@shared.ModalTitle() {
+			Hellooooooooooooooooooooo
+		}
+		@shared.ModalBody() {
+			<p class="py-4">Press ESC key or click the button below to close</p>
+		}
+	}
+}
+
+templ daisyUIDropdowns() {
+	// Dropdown
+	<h2>Dropdown</h2>
+	<div class="dropdown">
+		<div tabindex="0" role="button" class="btn m-1">Click</div>
+		<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+			<li><a>Item 1</a></li>
+			<li><a>Item 2</a></li>
+		</ul>
+	</div>
+	<div class="dropdown dropdown-hover">
+		<div tabindex="0" role="button" class="btn m-1">Hover</div>
+		<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow-md bg-base-100 rounded-box w-52">
+			<li><a>Item 1</a></li>
+			<li><a>Item 2</a></li>
+		</ul>
+	</div>
+}

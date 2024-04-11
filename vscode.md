@@ -3,6 +3,7 @@
 ## Extensions
 
 - [Go](https://marketplace.visualstudio.com/items?itemName=golang.Go)
+  - Run "Go: Install/Update Tools" command
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [templ-vscode](https://marketplace.visualstudio.com/items?itemName=a-h.templ)
 

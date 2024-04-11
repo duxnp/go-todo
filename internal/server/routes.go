@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"todo/cmd/web"
+	"todo/cmd/web/experiments"
 	"todo/cmd/web/todo"
 	"todo/internal/assets"
 	mw "todo/internal/middleware"
@@ -39,19 +40,15 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	g := e.Group("")
 
+	experiments.RegisterRoutes(g)
 	todo.RegisterRoutes(g, db)
 
 	g.GET("/", echo.WrapHandler(templ.Handler(web.Home())))
-	g.GET("/daisyui", echo.WrapHandler(templ.Handler(web.DaisyUI()))).Name = "daisyui"
 	g.GET("/foo", echo.WrapHandler(templ.Handler(web.Home())))
 	g.GET("/foo2", HomeHandler)
 	g.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
 	g.POST("/hello", echo.WrapHandler(http.HandlerFunc(web.HelloWebHandler)))
-
 	// g.GET("/", s.HelloWorldHandler)
-
-	// g.GET("/assets/:file", s.compiledAssetsHandler).Name = COMPILED_ASSETS_ROUTE_NAME
-
 	g.GET("/health", s.healthHandler)
 
 	return e

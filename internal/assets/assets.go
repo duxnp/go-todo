@@ -9,9 +9,11 @@ import (
 	precompiler "github.com/parnic/go-assetprecompiler"
 )
 
-const COMPILED_ASSETS_FILE_PREFIX = "app-"
-const COMPILED_ASSETS_CSS_ROUTE_NAME = "compiled-assets-css"
-const COMPILED_ASSETS_JS_ROUTE_NAME = "compiled-assets-js"
+const (
+	COMPILED_ASSETS_FILE_PREFIX    string = "app-"
+	COMPILED_ASSETS_CSS_ROUTE_NAME string = "compiled-assets-css"
+	COMPILED_ASSETS_JS_ROUTE_NAME  string = "compiled-assets-js"
+)
 
 type compileResults = map[precompiler.FileType]*precompiler.CompileResult
 

@@ -1,0 +1,21 @@
+package experiments
+
+import "todo/cmd/web/layouts"
+
+templ Tailwind() {
+	@layouts.Base() {
+		<section class="prose max-w-none">
+			<h1>Tailwind CSS</h1>
+			<div class="columns-1 md:columns-3">
+				<div>Col 1</div>
+				<div>Col 2</div>
+				<div>Col 3</div>
+			</div>
+			<div class="columns-1 md:columns-3">
+				<div>Col 1</div>
+				<div>Col 2</div>
+				<div>Col 3</div>
+			</div>
+		</section>
+	}
+}
