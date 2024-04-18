@@ -32,7 +32,7 @@ func DaisyUI() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"prose max-w-none\"><h1>daisyUI</h1><div class=\"divider\">This is a divider</div><h2>Tabs</h2><div role=\"tablist\" class=\"tabs tabs-lifted\"><input type=\"radio\" name=\"my_tabs_2\" role=\"tab\" class=\"tab\" aria-label=\"Nav\" checked><div role=\"tabpanel\" class=\"tab-content bg-base-100 border-base-300 rounded-box p-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -40,7 +40,7 @@ func DaisyUI() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><input type=\"radio\" name=\"my_tabs_2\" role=\"tab\" class=\"tab\" aria-label=\"Forms\"><div role=\"tabpanel\" class=\"tab-content bg-base-100 border-base-300 rounded-box p-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -48,7 +48,7 @@ func DaisyUI() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><input type=\"radio\" name=\"my_tabs_2\" role=\"tab\" class=\"tab\" aria-label=\"Modals\"><div role=\"tabpanel\" class=\"tab-content bg-base-100 border-base-300 rounded-box p-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -56,7 +56,7 @@ func DaisyUI() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 4)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><input type=\"radio\" name=\"my_tabs_2\" role=\"tab\" class=\"tab\" aria-label=\"Dropdowns\"><div role=\"tabpanel\" class=\"tab-content bg-base-100 border-base-300 rounded-box p-6\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -64,7 +64,7 @@ func DaisyUI() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 5)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -97,7 +97,7 @@ func daisyUINav() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 6)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"navbar bg-base-100\"><div class=\"flex-1\"><a class=\"btn btn-ghost text-xl\">daisyUI</a></div><div class=\"flex-none\"><ul class=\"menu menu-horizontal px-1\"><li><a>Link</a></li><li><details><summary>Parent</summary><ul class=\"p-2 bg-base-100 rounded-t-none\"><li><a>Link 1</a></li><li><a>Link 2</a></li></ul></details></li></ul></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -121,7 +121,7 @@ func daisyUIForm() templ.Component {
 			templ_7745c5c3_Var4 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 7)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h3>Text Input</h3><label class=\"form-control w-full max-w-xs\"><div class=\"label\"><span class=\"label-text\">What is your name?</span> <span class=\"label-text-alt\">Top Right label</span></div><input type=\"text\" placeholder=\"Type here\" class=\"input input-bordered w-full max-w-xs\"><div class=\"label\"><span class=\"label-text-alt\">Bottom Left label</span> <span class=\"label-text-alt\">Bottom Right label</span></div></label><h3>Text Input with Error</h3><label class=\"form-control w-full max-w-xs\"><div class=\"label\"><span class=\"label-text\">What is your name?</span></div><input type=\"text\" placeholder=\"Type here\" class=\"input input-bordered input-error w-full max-w-xs\"><div class=\"label\"><span class=\"label-text-alt\">Bottom Left label</span> <span class=\"label-text-alt text-error\">Bottom Left label</span></div></label><label class=\"block\"><span class=\"text-gray-700\">Normal mostly unstyled input</span> <input type=\"text\" class=\"mt-1 block w-full\" placeholder=\"\"></label><h2>Toggle</h2><div class=\"flex flex-col\"><div class=\"form-control w-52\"><label class=\"cursor-pointer label\"><span class=\"label-text\">Remember me</span> <input type=\"checkbox\" class=\"toggle toggle-primary\" checked></label></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -145,7 +145,7 @@ func daisyUIModal() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 8)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2 class=\"mt-0\">Modals</h2><!-- Open the modal using ID.showModal() method --><div class=\"tooltip tooltip-accent\" data-tip=\"Click here to open a modal\"><button class=\"btn btn-secondary\" onclick=\"my_modal_2.showModal()\">open modal</button></div><div class=\"tooltip tooltip-accent\" data-tip=\"Click here to open a modal\"><button class=\"btn btn-secondary\" _=\"on click my_modal_2.showModal()\">open modal with hyperscript</button></div><div class=\"join\"><button class=\"btn btn-secondary btn-outline join-item\" onclick=\"my_modal_2.showModal()\">open modal</button> <button class=\"btn btn-secondary btn-outline join-item\" _=\"on click my_modal_2.showModal()\">open modal with hyperscript</button></div><div class=\"join\"><button class=\"btn btn-secondary join-item rounded-full outline outline-secondary-content\">btn 1</button> <button class=\"btn btn-secondary join-item rounded-full outline outline-secondary-content tooltip tooltip-accent\" data-tip=\"MY TOOLSTIP!\">btn 2</button> <button class=\"btn btn-secondary join-item rounded-full outline outline-secondary-content\">btn 3</button></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -161,7 +161,7 @@ func daisyUIModal() templ.Component {
 					templ_7745c5c3_Buffer = templ.GetBuffer()
 					defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 				}
-				templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 9)
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("Hellooooooooooooooooooooo")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -174,7 +174,7 @@ func daisyUIModal() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 10)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -184,7 +184,7 @@ func daisyUIModal() templ.Component {
 					templ_7745c5c3_Buffer = templ.GetBuffer()
 					defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 				}
-				templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 11)
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"py-4\">Press ESC key or click the button below to close</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -226,7 +226,7 @@ func daisyUIDropdowns() templ.Component {
 			templ_7745c5c3_Var9 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 12)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2>Dropdown</h2><div class=\"dropdown\"><div tabindex=\"0\" role=\"button\" class=\"btn m-1\">Click</div><ul tabindex=\"0\" class=\"dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52\"><li><a>Item 1</a></li><li><a>Item 2</a></li></ul></div><div class=\"dropdown dropdown-hover\"><div tabindex=\"0\" role=\"button\" class=\"btn m-1\">Hover</div><ul tabindex=\"0\" class=\"dropdown-content z-[1] menu p-2 shadow-md bg-base-100 rounded-box w-52\"><li><a>Item 1</a></li><li><a>Item 2</a></li></ul></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

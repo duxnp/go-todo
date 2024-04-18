@@ -1,0 +1,23 @@
+.heroicon-stroke-w-0\.4 > svg {
+  stroke-width: 0.4;
+}
+
+.heroicon-stroke-w-0\.8 > svg {
+  stroke-width: 0.8;
+}
+
+.heroicon-stroke-w-1 > svg {
+  stroke-width: 1;
+}
+
+.heroicon-stroke-w-1\.2 > svg {
+  stroke-width: 1.2;
+}
+
+.heroicon-stroke-w-1\.6 > svg {
+  stroke-width: 1.6;
+}
+
+.heroicon-test > symbol {
+  stroke-width: 0.4;
+}

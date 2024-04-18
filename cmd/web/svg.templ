@@ -1,0 +1,37 @@
+package web
+
+import "strings"
+
+templ Icon(icon string, cssClasses ...string) {
+	if len(cssClasses) > 0 {
+		@templ.Raw(Icons.ReadSVG(icon, cssClasses...))
+	} else {
+		@templ.Raw(Icons.ReadSVG(icon, "h-8 w-8"))
+	}
+}
+
+templ Symbol(filename string, cssClasses ...string) {
+	@templ.Raw(Icons.ReadSymbol(filename, cssClasses...))
+}
+
+templ SvgSymbols() {
+	<svg class="hidden">
+		{ children... }
+	</svg>
+}
+
+templ Use(filename string) {
+	<use href={ string(templ.URL("#" + strings.ReplaceAll(filename, "/", "-"))) }></use>
+}
+
+templ UseSymbol(filename string, cssClasses ...string) {
+	if len(cssClasses) > 0 {
+		<svg class={ strings.Join(cssClasses, " ") }>
+			@Use(filename)
+		</svg>
+	} else {
+		<svg class="h-8 w-8">
+			@Use(filename)
+		</svg>
+	}
+}

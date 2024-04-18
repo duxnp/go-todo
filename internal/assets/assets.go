@@ -22,8 +22,8 @@ type compileResults = map[precompiler.FileType]*precompiler.CompileResult
 func compile() compileResults {
 	assets, error := precompiler.Compile(precompiler.Config{
 		Files: []string{
-			// "cmd/web/static/css/foo.css",
 			"cmd/web/static/css/output.css",
+			"cmd/web/static/css/heroicons.css",
 			"cmd/web/static/js/application.js",
 		},
 		Minify:     false,

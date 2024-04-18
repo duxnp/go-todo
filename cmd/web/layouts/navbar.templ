@@ -6,7 +6,7 @@ import "todo/internal/util"
 templ NavBar() {
 	<div class="navbar bg-primary text-primary-content">
 		<div class="flex-1 px-2 lg:flex-none">
-			<a class="text-lg font-bold">Todos</a>
+			<a href={ templ.URL(util.Reverse(ctx, "home")) } class="text-lg font-bold">Todos</a>
 		</div>
 		<div class="flex justify-end flex-1">
 			<div class="flex items-center">

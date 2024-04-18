@@ -4,9 +4,24 @@ import "todo/cmd/web/layouts"
 
 templ Home() {
 	@layouts.Base() {
-		<p>foo</p>
-		<p>foo</p>
-		<p>foo</p>
+		@SvgSymbols() {
+			@Symbol("hi/solid/academic-cap")
+			@Symbol("hi/solid/adjustments-horizontal")
+			@Symbol("hi/solid/foo")
+			@Symbol("loading")
+		}
+		<div class="columns-2">
+			@UseSymbol("loading", "h-8 w-8")
+			@Icon("loading")
+			@UseSymbol("hi/solid/foo")
+		</div>
+		<div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-purple-100 text-red-900 heroicon-stroke-w-0.4">
+			@Icon("hi/solid/adjustments-horizontal")
+		</div>
+		<div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-purple-100 text-red-900 stroke-2">
+			@Icon("hi/solid/adjustments-horizontall")
+		</div>
+		@Icon("loading", "h-8 w-8")
 	}
 }
 

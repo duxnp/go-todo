@@ -1,11 +1,15 @@
 package todo
 
+import "todo/cmd/web"
 import "todo/cmd/web/layouts"
 import "todo/internal/model"
 import "todo/internal/util"
 
 templ Index(model []model.Todo) {
 	@layouts.Base() {
+		@web.SvgSymbols() {
+			@web.Symbol("hi/solid/clipboard-document-check")
+		}
 		<h1>Todos</h1>
 		<label class="form-control w-full max-w-xs">
 			<div class="label">
@@ -14,6 +18,9 @@ templ Index(model []model.Todo) {
 			<input type="text" placeholder="Add new todo" class="input input-bordered w-full max-w-xs"/>
 		</label>
 		<button class="btn btn-primary">Add</button>
+		@web.UseSymbol("hi/solid/clipboard-document-check", "h-8 w-8")
+		@web.Icon("hi/solid/asf")
+		@web.Icon("hi/solid/asf", "h-8 w-8")
 		<ul>
 			for _, item := range model {
 				<li>

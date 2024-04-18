@@ -31,7 +31,7 @@ func AutoAnimate() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Auto Animate</h1><div class=\"card bg-base-200 shadow-xl\"><div class=\"card-body cursor-pointer\" id=\"dropdown\"><div class=\"card-title\">Click me to open!</div></div></div><script type=\"module\">\n      import autoAnimate from '/lib/auto-animate/index.mjs'\n      const dropdown = document.getElementById('dropdown')\n      autoAnimate(dropdown)\n\n      const p = document.createElement('p')\n      p.innerText = \"Oh yeah! Oh no! I can't believe this! Where are my eggs already?!\"\n\n      dropdown.addEventListener('click', toggle, false);\n\n      function toggle () {\n        dropdown.contains(p) ? p.remove() : dropdown.appendChild(p)\n      }\n    </script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

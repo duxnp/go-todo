@@ -34,4 +34,6 @@ tailwindcss
 node_modules
 cmd/web/static/lib/**/*
 cmd/web/static/css/output.css
+cmd/web/static/svg/hi
 **/*_templ.txt
+.DS_Store

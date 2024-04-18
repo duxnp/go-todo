@@ -18,10 +18,15 @@
     {
       "from": "node_modules/hyperscript.org/dist/_hyperscript.js",
       "to": "cmd/web/static/lib/hyperscript.org/_hyperscript.js"
+    },
+    {
+      "from": "node_modules/heroicons/24/**/*",
+      "to": "cmd/web/static/svg/hi"
     }
   ],
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
+    "heroicons": "^2.1.3",
     "htmx.org": "^1.9.11",
     "hyperscript.org": "^0.9.12"
   },

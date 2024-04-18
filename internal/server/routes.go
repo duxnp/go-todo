@@ -43,7 +43,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	experiments.RegisterRoutes(g)
 	todo.RegisterRoutes(g, db)
 
-	g.GET("/", echo.WrapHandler(templ.Handler(web.Home())))
+	g.GET("/", echo.WrapHandler(templ.Handler(web.Home()))).Name = "home"
 	g.GET("/foo", echo.WrapHandler(templ.Handler(web.Home())))
 	g.GET("/foo2", HomeHandler)
 	g.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
